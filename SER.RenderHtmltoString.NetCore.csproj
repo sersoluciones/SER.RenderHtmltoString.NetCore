@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<TargetFramework>net5.0</TargetFramework>
+		<Description>
+			Utilities to render razor to string, you can use this to email or convert to pdf through wkhtml library
+		</Description>
+		<RepositoryUrl>https://github.com/sersoluciones/SER.RenderHtmltoString.NetCore</RepositoryUrl>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+	</ItemGroup>
+
+</Project>
