@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<TargetFramework>net5.0</TargetFramework>
 		<Description>
 			Utilities to render razor to string, you can use this to email or convert to pdf through wkhtml library

@@ -54,12 +54,13 @@ namespace SER.RenderHtmltoString.NetCore.Render
             {
                 RequestServices = _serviceProvider
             };
-            return new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
+            return new ActionContext(httpContext, new RouteData(),  new ActionDescriptor());
         }
 
         public async Task<string> RenderToStringAsync<T>(string pageName, T model) where T : PageModel
         {
             ActionContext actionContext;
+            TempDataDictionary dataDict;
 
             try
             {
@@ -68,10 +69,18 @@ namespace SER.RenderHtmltoString.NetCore.Render
                         _httpContext.HttpContext.GetRouteData(),
                         _actionContext.ActionContext.ActionDescriptor
                     );
+                dataDict = new TempDataDictionary(
+                     _httpContext.HttpContext,
+                     _tempDataProvider
+                 );
             }
             catch (Exception)
             {
                 actionContext = GetActionContext();
+                dataDict = new TempDataDictionary(
+                     actionContext.HttpContext,
+                     _tempDataProvider
+                 );
             }
 
             using var sw = new StringWriter();
@@ -102,10 +111,7 @@ namespace SER.RenderHtmltoString.NetCore.Render
                 {
                     Model = model
                 },
-                new TempDataDictionary(
-                    _httpContext.HttpContext,
-                    _tempDataProvider
-                ),
+                dataDict,
                 sw,
                 new HtmlHelperOptions()
             );
